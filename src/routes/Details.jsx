@@ -19,7 +19,7 @@ const Details = () => {
       }
     }
     getData();
-  }, [url.id]);
+  }, [countryId.id]);
 
   return (
     <section className='single_page'>
@@ -68,6 +68,11 @@ const Details = () => {
                       <p className="extra_details">
                         <span className="text_dark">Currencies:</span>
                         {/* <span className="text_light">{country?.currencies[0].name}</span> */}
+                        {/* {
+                          country.currencies.map((currency, index) => (
+                            <span>{currency}</span>
+                          ))
+                        } */}
                       </p>
                       <p className="extra_details">
                         <span className="text_dark">Languages:</span>
@@ -85,7 +90,7 @@ const Details = () => {
                           <Link to={`/`} key={index} className='border_item'>{item.slice(0, 1)+item.slice(1, item.length).toLowerCase()}</Link>
                         ))
                         :
-                        <span className='no_borders'>No border Countries</span>
+                        <span className='no_borders'>No bordering countries</span>
                       }
                     </div>
                   </div>
