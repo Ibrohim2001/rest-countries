@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
-import useData from '../hooks/getData';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 

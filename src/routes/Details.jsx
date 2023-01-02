@@ -19,7 +19,7 @@ const Details = () => {
       }
     }
     getData();
-  }, [url]);
+  }, [url.id]);
 
   return (
     <section className='single_page'>
@@ -82,7 +82,7 @@ const Details = () => {
                         country.borders 
                         ? 
                         country.borders.map((item,index) => (
-                          <Link to={`/country/${item.name}/`} key={index} className='border_item'>{item.slice(0, 1)+item.slice(1, item.length).toLowerCase()}</Link>
+                          <Link to={`/`} key={index} className='border_item'>{item.slice(0, 1)+item.slice(1, item.length).toLowerCase()}</Link>
                         ))
                         :
                         <span className='no_borders'>No border Countries</span>
