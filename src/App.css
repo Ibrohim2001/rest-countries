@@ -1,38 +1,276 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.container {
+  margin: 0 auto;
+  width: 100%;
+  color: var(--very-dark-text);
+  background-color: var(--very-light-gray);
   min-height: 100vh;
+}
+.header .header_container {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 60px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  color: var(--very-dark-text);
+  background-color: var(--white);
+  box-shadow: var(--box-shadow);
+}
+.header_title {
+  font-size: 1.75rem;
+}
+.theme_btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.2rem 1rem;
+  width: 140px;
+  color: var(--very-dark-text);
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-family: 'Nunito Sans', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.theme_btn:hover {
+  border-color: var(--dark-blue);
+  transition: all 0.2s ease;
+}
+.theme_icon {
+  margin-top: 3.5px;
+}
+.home,
+.single_page {
+  width: 100%;
+  height: auto;
+  max-width: 1440px;
+  margin: 2rem auto 0 auto;
+  padding: 1rem;
+}
+.home_options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.filter_container, 
+.searchbar,
+.filters {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  color: var(--dark-gray);
+  background-color: var(--white);
+  box-shadow: var(--box-shadow);
+  border-radius: 3px;
+}
+.searchbar {
+  width: 350px;
+}
+.searchbar .search_icon {
+  margin-bottom: -5px;
+  margin-right: 10px;
+}
+.search_input {
+  flex: 1;
+  color: var(--very-dark-text) !important;
+  background-color: transparent !important;
+  outline: none;
+  border: none;
+  text-indent: 5px;
+  font-size: 16px;
+  font-family: 'Nunito Sans', sans-serif;
+}
+.filter_container {
+  color: var(--dark-blue);
+  cursor: pointer;
+  position: relative;
+}
+.filter_title {
+  margin-top: -5px;
+}
+.filter_container .arrow_icon > svg {
+  margin-bottom: -7px;
+}
+.filters {
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  color: var(--dark-blue);
+  list-style: none;
+  position: absolute;
+  top: -10px;
+  left: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  opacity: 0;
+}
+.filters > li {
+  margin: 5px 0;
+}
+.filters.display {
+  top: 50px;
+  visibility: visible;
+  transition: all 0.2s ease;
+  opacity: 1;
+}
+.card_container {
+  width: 100%;
+  margin: 2rem 0;
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 250px);
+  grid-template-rows: auto;
+  grid-gap: 2rem 1rem;
+  justify-content: space-between;
+}
+.card {
+  height: 320px;
+  color: var(--very-dark-text);
+  background-color: var(--white);
+  box-shadow: var(--box-shadow);
+  border-radius: 5px;
+  cursor: pointer;
+}
+.flag_img {
+  width: 100%;
+  height: 150px;
+  border-top-right-radius: inherit;
+  border-top-left-radius: inherit;
+  -webkit-box-shadow: 0px 1px 3px 1px rgba(66, 68, 90, 0.2);
+  -moz-box-shadow: 0px 1px 3px 1px rgba(66, 68, 90, 0.2);
+  box-shadow: 0px 1px 3px 1px rgba(66, 68, 90, 0.2);
+}
+.flag_img > img {
+  width: 100%;
+  height: 100%;
+  border-top-right-radius: inherit;
+  border-top-left-radius: inherit;
+}
+.card_info {
+  padding: 1rem;
+}
+.country_name {
+  margin: 0.5rem 0;
+  color: var(--dark-blue);
+  font-size: 1.15rem;
+}
+.extra_details {
+  font-size: 0.9rem;
+  margin: 0.25rem 0;
+}
+.extra_details .text_dark {
+  color: var(--very-dark-text);
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+.text_light {
+  color: var(--very-dark-text);
+}
+.single_page_top {
+  display: flex;
+  align-items: center;
+}
+.single_page_top > a {
+  padding: 0.2rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: var(--very-dark-text);
+  background-color: var(--white);
+  border: none;
+  box-shadow: var(--box-shadow);
+  text-decoration: none;
+}
+.single_page .arrow_left {
+  margin: 5px 5px 0 0;
+}
+
+.single_page_content {
+  height: calc(650px - 240px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-gap: 1rem;
+  margin-top: 2rem;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.left,
+.right {
+  width: 75%;
+}
+.left > img {
+  width: 100%;
+}
+.right .country_name {
+  font-size: 2rem;
+}
+.single_page_info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.border {
+  display: grid;
+  grid-template-columns: 150px 3fr;
+  align-content: center;
+  margin-top: 2rem;
+}
+.subtitle {
+  font-size: 1rem;
+  font-weight: 400;
+  align-self: center;
+}
+.border_list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-left: 1rem;
+}
+.border_item {
+  color: inherit;
+  margin: 5px;
+  padding: 0.25rem 1rem;
+  box-shadow: var(--box-shadow);
+  text-decoration: none;
 }
 
-.App-link {
-  color: #61dafb;
+.dark {
+  transition: all 0.2s ease;
+  color: var(--white);
+  background-color: var(--very-dark-bg);
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.dark .theme_btn {
+  color: var(--white);
+  transition: all 0.2s ease;
+}
+.dark .theme_btn:hover {
+  border-color: var(--very-light-gray);
+  transition: all 0.2s ease;
+}
+.dark .header_container,
+.dark .card {
+  color: var(--white);
+  background-color: var(--dark-blue);
+}
+.dark .country_name, 
+.dark .text_dark,
+.dark .text_light {
+  color: var(--white);
+}
+.dark .filter_container, 
+.dark .searchbar,
+.dark .filters,
+.dark .btn {
+  color: var(--very-light-gray);
+  background-color: var(--dark-blue);
+}
+.dark .search_input {
+  color: var(--very-light-gray) !important;
+  background-color: var(--dark-blue);
+}
+.dark .search_input::placeholder {
+  color: var(--white);
 }
