@@ -1,25 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
 
 const Details = () => {
 
-  const countryId = useParams();
+  const countryName = useLocation().pathname.split('/')[2].replace(/-/g, ' ');
+  // const countryId = useParams();
   const url = 'https://restcountries.com/v3.1';
   const [data, setData] = useState([]);
   useEffect(() => {
     const getData = async () => {
       try {
-        const res = await axios.get(`${url}/name/${countryId.id}`);
+        const res = await axios.get(`${url}/name/${countryName}`);
         setData(res?.data);
       } catch (error) {
         console.log(error);
       }
     }
     getData();
-  }, [countryId.id]);
+  }, [countryName]);
 
   return (
     <section className='single_page'>

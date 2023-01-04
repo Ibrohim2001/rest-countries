@@ -7,10 +7,10 @@ import { Link } from 'react-router-dom';
 
 const Home = ({ theme }) => {
 
-  const regions = ["all", "africa", "america", "asia", "europe", "oceania"];
+  const regions = ["africa", "america", "asia", "europe", "oceania"];
 
   const [showFilters, setShowFilters] = useState(false);
-  const [region, setRegion] = useState("");
+  const [region, setRegion] = useState("all");
   const url = 'https://restcountries.com/v3.1'; 
   const [searchCountry, setSearchCountry] = useState("");
   const [data, setData] = useState([]);
@@ -30,10 +30,6 @@ const Home = ({ theme }) => {
     setShowFilters(!showFilters);
   }
 
-  const handleSearch = (e) => {
-    setSearchCountry(e.target.value);
-  }
-
   const getByRegion = async (region) => {
     try {
       const res = region === "all" ? await axios.get(`${url}/${region}`) : await axios.get(`${url}/region/${region}`);
@@ -41,6 +37,10 @@ const Home = ({ theme }) => {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  const handleSearch = (e) => {
+    setSearchCountry(e.target.value);
   }
 
   return (    
@@ -62,7 +62,9 @@ const Home = ({ theme }) => {
             >
               <div className="filter">
                 <span className='filter_title'>Filter by {region === "" ? "All" : region}</span>
-                <span className='arrow_icon'><KeyboardArrowDownOutlinedIcon style={showFilters ? {transform: "rotate(180deg)"} : {transform: "rotate(0deg)"}}/></span>
+                <span className='arrow_icon'>
+                  <KeyboardArrowDownOutlinedIcon style={showFilters ? {transform: "rotate(180deg)"} : {transform: "rotate(0deg)"}}/>
+                </span>
               </div>
               <ul className={showFilters ? "filters display" : "filters"}>
                 {regions.map((item, index) => (
@@ -86,7 +88,7 @@ const Home = ({ theme }) => {
               ? item
               : item.name.common.toLowerCase().includes(searchCountry)
             }).map((country, index) => (
-              <Link to={`/country/${country.name.common}`} className="card" key={index}>
+              <Link to={`/country/${country.name.common.replace(/ /g, '-')}`} className="card" key={index}>
                 <div className="flag_img">
                   <img src={country.flags?.png} alt="" />    
                 </div>
@@ -106,8 +108,7 @@ const Home = ({ theme }) => {
                   </p>
                 </div>
               </Link>
-            ))
-           }
+            ))}
           </div>
         
       </div>
